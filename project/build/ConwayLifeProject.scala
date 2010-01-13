@@ -5,4 +5,5 @@ class ConwayLifeProject(info: ProjectInfo) extends DefaultProject(info) {
   val snapshots = ScalaToolsSnapshots 
   val sc = "org.scala-tools.testing" % "scalacheck_2.8.0.Beta1-RC5" % "1.7-SNAPSHOT"
   val scalaSwing = "org.scala-lang" % "scala-swing" % "2.8.0.Beta1-RC7"
+  val mavenLocal = "Local Maven Repository" at "file://"+Path.userHome+"/.m2/repository"
 }
