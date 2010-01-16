@@ -48,8 +48,13 @@ object AstrologyGameOfLife extends SimpleSwingApplication {
         vGap = 0
         hGap = 0
         preferredSize = ((500,500): Dimension)
-        
-        for ((_, cell) <- DisplayGrid.cells.toSeq sortBy (_._1))
+
+        // This sorting criteria inverts the rows, so that row 0
+        // can be the row on the bottom instead of the top
+        def coordSorting: (((Int, Int), Cell)) => (Int, Int) = {
+          case ((row, col), _) => (DisplayGrid.rowQtd - row - 1, col)
+        }
+        for ((_, cell) <- DisplayGrid.cells.toSeq sortBy coordSorting)
           contents.append(cell)
       }
 

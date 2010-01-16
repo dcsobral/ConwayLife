@@ -12,7 +12,7 @@ object DisplayGrid {
   val colQtd=50
   val rowQtd=50
   
-  val cells = Map(Seq.tabulate(rowQtd, colQtd)((r, c) =>
-    (rowQtd - r - 1, c) -> new Cell((_: Cell).switch)
+  val cells = Map(Seq.tabulate(rowQtd, colQtd)(
+    (_, _) -> new Cell((_: Cell).switch)
   ).flatten: _*)
 }
