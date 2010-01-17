@@ -68,21 +68,23 @@ object AstrologyGameOfLife extends SimpleSwingApplication {
 
       val center = new SplitPane(Orientation.Vertical, buttons, board)
       layout(center) = Center
-
-      object slider extends Slider {
-        min = 0
-        value = 0
-        max = 10
-        majorTickSpacing = 1
-      }
       layout(slider) = South
     }
   }
 
+  object slider extends Slider {
+    min = 100
+    max = 1000
+    majorTickSpacing = 10
+    snapToTicks = true
+  }
+
+  slider.value = 500
+
   val sandsOfTime = actor {
     var playing = false
     loop {
-      reactWithin(500 /*ms*/) {
+      reactWithin(slider.value) {
         case TIMEOUT => if (playing) DisplayGrid.grid = DisplayGrid.grid.nextGeneration
         case "pause" => playing = false
         case "play" => playing = true
