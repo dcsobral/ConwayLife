@@ -156,7 +156,7 @@ object ConwayTester {
     take MaxGenerations
     map (_.size)
     sliding WindowSize
-    map (_.removeDuplicates.length)
+    map (_.distinct.length)
     takeWhile (_ > 1)
     length
   )
