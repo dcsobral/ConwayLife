@@ -127,8 +127,8 @@ object ConwayPatterns {
   // Helper methods
   // Enable constructing sets of coordinates from string patterns.
   implicit def coordsFromPattern(pattern: String) = for {
-    (xs, y) <- pattern.stripMargin.split('\n').map(_.zipWithIndex).zipWithIndex.iterator
-    (c, x) <- xs.iterator
+    (xs, y) <- pattern.stripMargin.lines.map(_.zipWithIndex).zipWithIndex
+    (c, x) <- xs
     if c != ' '
   } yield Coord(x, y)
 
